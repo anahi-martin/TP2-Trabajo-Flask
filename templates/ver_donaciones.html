@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Mis Donaciones{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='ver_donaciones.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="content-list-container">
+    <h1>Mis Donaciones</h1>
+    {% if donaciones %}
+        <div class="list-cards">
+            {% for donacion in donaciones %}
+            <div class="card">
+                {% if donacion.imagen %}
+                    <img src="{{ url_for('static', filename='uploads/' + donacion.imagen) }}" alt="Imagen de donación">
+                {% endif %}
+                <h2>{{ donacion.titulo }}</h2>
+                <p>{{ donacion.descripcion }}</p>
+                <small>Ubicación: {{ donacion.ubicacion }}</small>
+                
+                <div class="card-actions">
+                    <a href="{{ url_for('editar_donacion', id=donacion.id) }}" class="btn-edit">Editar</a>
+                    <form action="{{ url_for('eliminar_donacion', id=donacion.id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que quieres eliminar esta donación?');">
+                        <button type="submit" class="btn-delete">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Aún no has publicado ninguna donación.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Donación{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Editar Donación</h2>
+    <form action="{{ url_for('editar_donacion', id=donacion.id) }}" method="POST" enctype="multipart/form-data">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" value="{{ donacion.titulo }}" required>
+        
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required>{{ donacion.descripcion }}</textarea>
+        
+        <label for="ubicacion" class="form-label">Distrito</label>
+        <select class="form-select" id="ubicacion" name="ubicacion" required>
+            <option value="" disabled selected>Selecciona tu distrito</option>
+            <option value="Norte">Norte</option>
+            <option value="Noroeste">Noroeste</option>
+            <option value="Centro">Centro</option>
+            <option value="Oeste">Oeste</option>
+            <option value="Sudoeste">Sudoeste</option>
+            <option value="Sur">Sur</option>
+        </select>
+        
+        {% if donacion.imagen %}
+            <img src="{{ url_for('static', filename='uploads/' + donacion.imagen) }}" alt="Imagen actual" style="max-width:200px; margin-top: 10px;">
+        {% endif %}
+        <label for="imagen">Cambiar Imagen (opcional):</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*">
+        
+        <button type="submit" class="btn-primary">Guardar Cambios</button>
+        <a href="{{ url_for('ver_donaciones') }}" class="btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

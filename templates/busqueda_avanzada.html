@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Búsqueda Avanzada{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='busqueda.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="content-list-container">
+    <h1>Todas las Publicaciones</h1>
+    
+    <div class="busqueda-filtros">
+        <span>Filtrar por:</span>
+        <a href="{{ url_for('busqueda_avanzada', tipo='todos') }}" class="btn {% if tipo_busqueda == 'todos' %}active-filter{% else %}btn-secondary{% endif %}">Todos</a>
+        <a href="{{ url_for('busqueda_avanzada', tipo='donacion') }}" class="btn {% if tipo_busqueda == 'donacion' %}active-filter{% else %}btn-secondary{% endif %}">Donaciones</a>
+        <a href="{{ url_for('busqueda_avanzada', tipo='servicio') }}" class="btn {% if tipo_busqueda == 'servicio' %}active-filter{% else %}btn-secondary{% endif %}">Servicios</a>
+        <a href="{{ url_for('busqueda_avanzada', tipo='ayuda') }}" class="btn {% if tipo_busqueda == 'ayuda' %}active-filter{% else %}btn-secondary{% endif %}">Ayuda</a>
+    </div>
+
+    <div class="lista-publicaciones">
+        {% if publicaciones %}
+            {% for p in publicaciones %}
+            <div class="publicacion-global publicacion-{{ p.tipo }}">
+                <h3>[{{ p.tipo.upper() }}] {{ p.titulo }}</h3>
+                {% if p.imagen and p.tipo == 'donacion' %}
+                <img src="{{ url_for('static', filename='uploads/' + p.imagen) }}" alt="{{ p.titulo }}">
+                {% endif %}
+                <p>{{ p.descripcion }}</p>
+                <small><strong>Ubicación:</strong> {{ p.ubicacion }}</small><br>
+                {% if p.contacto %}
+                <small><strong>Contacto:</strong> {{ p.contacto }}</small><br>
+                {% endif %}
+                <small><strong>Usuario:</strong> {{ p.usuario }}</small>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No se encontraron publicaciones que coincidan con los filtros.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

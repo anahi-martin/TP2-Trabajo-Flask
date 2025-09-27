@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AportAR{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <h2>AportAR</h2>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="menu-item">
+                    <div class="menu-header">
+                        <span>Donaciones</span>
+                    </div>
+                    <div class="submenu">
+                        <a href="/donaciones/publicar">Publicar donación</a>
+                        <a href="/donaciones/ver">Ver donaciones</a>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-header">
+                        <span>Servicios</span>
+                    </div>
+                    <div class="submenu">
+                        <a href="/servicios/publicar">Ofrecer servicio</a>
+                        <a href="/servicios/ver">Ver servicios</a>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-header">
+                        <span>Ayuda</span>
+                    </div>
+                    <div class="submenu">
+                        <a href="/ayuda/solicitar">Solicitar ayuda</a>
+                        <a href="/ayuda/ver">Ver solicitudes</a>
+                    </div>
+                </div>
+
+                <div class="menu-item single">
+                    <a href="/busqueda">
+                        <span>Búsqueda Avanzada</span>
+                    </a>
+                </div>
+
+                <div class="menu-item single">
+                    <a href="/perfil">
+                        <span>Mi Perfil</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="bottom-menu">
+                <div class="menu-item single">
+                    <a href="{{ url_for('logout') }}">
+                        <span>Cerrar Sesión</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="top-header">
+                <div class="user-profile">
+                    <div class="user-info">
+                        <div class="avatar">{{ session.username[0].upper() if session.username else 'U' }}</div>
+                        <span class="username">{{ session.username if session.username else 'Usuario' }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

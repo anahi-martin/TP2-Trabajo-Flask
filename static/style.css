@@ -1,0 +1,347 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* General */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar lateral*/
+.sidebar {
+  width: 280px;
+  background-color: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #ddd;
+}
+
+/* Logo en la parte superior del sidebar */
+.logo {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo h2 {
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-menu {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.menu-item {
+  margin-bottom: 5px;
+}
+
+.menu-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  color: #555;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.menu-header:hover {
+  background-color: #ddd;
+}
+
+.submenu {
+  display: none;
+  background-color: #f0f0f0;
+  padding-left: 40px;
+}
+
+.menu-item.active .submenu {
+  display: block;
+}
+
+.submenu a {
+  display: block;
+  padding: 8px 20px;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.submenu a:hover {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.menu-item.single a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #555;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.menu-item.single a:hover {
+  background-color: #ddd;
+}
+
+.bottom-menu {
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+/* Contenido principal */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+}
+
+/* Top header */
+.top-header {
+  background-color: white;
+  padding: 15px 30px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+/* avatar */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  background-color: #1b2a41;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.username {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Area de contenido */
+.content-area {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+/* Mensaje bienvenida */
+.welcome-message {
+  text-align: center;
+  color: #666;
+}
+
+.welcome-message h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.welcome-message p {
+  font-size: 16px;
+}
+
+/* Inputs y botones de las publicaciones */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Clase base para todos los botones. */
+.btn, .btn-primary, .btn-secondary, .btn-edit, .btn-delete, .btn-add {
+  all: unset;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s;
+  color: white;
+  font-weight: 400;
+}
+
+/* Estilos de colores específicos para cada botón */
+.btn-primary {
+  background-color: #1b2a41;
+}
+
+.btn-primary:hover {
+  background-color: #162036;
+}
+
+.btn-add {
+  background-color: #28a745;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+}
+
+.btn-edit:hover {
+  background-color: #e0a800;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+
+/* Estilos para las nuevas paginas de ver y editar */
+.form-container, .content-list-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.list-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Estilo base para todas las tarjetas (donaciones, servicios, etc.) */
+.card, .publicacion-global {
+  background: #1b2a41;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.card p {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.card small {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #ccc;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+/* Estilos de alerta */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-color: #ffeeba;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 250px;
+  }
+
+  .content-area {
+    padding: 20px;
+  }
+
+  .welcome-message h1 {
+    font-size: 24px;
+  }
+}

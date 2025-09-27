@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Donación{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Editar Ayuda</h2>
+    <form action="{{ url_for('editar_ayuda', id=ayuda.id) }}" method="POST" enctype="multipart/form-data">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" value="{{ ayuda.titulo }}" required>
+        
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required>{{ ayuda.descripcion }}</textarea>
+        
+        <label for="ubicacion" class="form-label">Distrito</label>
+        <select class="form-select" id="ubicacion" name="ubicacion" required>
+            <option value="" disabled selected>Selecciona tu distrito</option>
+            <option value="Norte">Norte</option>
+            <option value="Noroeste">Noroeste</option>
+            <option value="Centro">Centro</option>
+            <option value="Oeste">Oeste</option>
+            <option value="Sudoeste">Sudoeste</option>
+            <option value="Sur">Sur</option>
+        </select>
+        
+        <label for="contacto">Contacto:</label>
+        <input type="number" id="contacto" name="contacto" value="{{ ayuda.contacto }}" required>
+        
+        <button type="submit" class="btn-primary">Guardar Cambios</button>
+        <a href="{{ url_for('ver_ayuda') }}" class="btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

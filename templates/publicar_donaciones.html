@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Publicar Donación{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Publicar Donación</h2>
+    <form action="{{ url_for('publicar_donacion') }}" method="POST" enctype="multipart/form-data">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea>
+        
+        <label for="ubicacion" class="form-label">Distrito</label>
+        <select class="form-select" id="ubicacion" name="ubicacion" required>
+            <option value="" disabled selected>Selecciona tu distrito</option>
+            <option value="Norte">Norte</option>
+            <option value="Noroeste">Noroeste</option>
+            <option value="Centro">Centro</option>
+            <option value="Oeste">Oeste</option>
+            <option value="Sudoeste">Sudoeste</option>
+            <option value="Sur">Sur</option>
+        </select>
+
+        <label for="imagen">Imagen (opcional):</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*">
+        
+        <button type="submit" class="btn-primary">Publicar Donación</button>
+    </form>
+</div>
+{% endblock %}

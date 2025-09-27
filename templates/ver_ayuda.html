@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Mis Solicitudes de Ayuda{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='ver_ayuda.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="content-list-container">
+    <h1>Mis Solicitudes de Ayuda</h1>
+    {% if ayudas %}
+        <div class="list-cards">
+            {% for ayuda in ayudas %}
+            <div class="card">
+                {% if ayuda.imagen %}
+                    <img src="{{ url_for('static', filename='uploads/' + ayuda.imagen) }}" alt="Imagen de ayuda">
+                {% endif %}
+                <h2>{{ ayuda.titulo }}</h2>
+                <p>{{ ayuda.descripcion }}</p>
+                <small>Ubicación: {{ ayuda.ubicacion }}</small>
+                <small>Contacto: {{ ayuda.contacto }}</small>
+                
+                <div class="card-actions">
+                    <a href="{{ url_for('editar_ayuda', id=ayuda.id) }}" class="btn-edit">Editar</a>
+                    <form action="{{ url_for('eliminar_ayuda', id=ayuda.id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que quieres eliminar esta donación?');">
+                        <button type="submit" class="btn-delete">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Aún no has publicado ninguna solicitud de ayuda.</p>
+    {% endif %}
+</div>
+{% endblock %}

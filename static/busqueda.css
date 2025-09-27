@@ -1,0 +1,89 @@
+/* Estilos de búsqueda avanzada */
+.busqueda-filtros {
+  display: block;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #e8e8e8;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.busqueda-filtros label {
+  font-weight: 500;
+  color: #333;
+}
+
+.busqueda-filtros select,
+.busqueda-filtros input {
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  background-color: #fff;
+  transition: border-color 0.2s;
+}
+
+.busqueda-filtros select:focus,
+.busqueda-filtros input:focus {
+  outline: none;
+  border-color: #1b2a41;
+}
+
+
+/* Contenedor general de la lista */
+.lista-publicaciones {
+  display: flex;
+  flex-direction: column; 
+  gap: 20px;
+}
+
+/* Estilo base para todas las tarjetas */
+.publicacion-global {
+  background: #1b2a41;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  height: 100%
+}
+
+/* Estilo para los títulos y descripciones dentro de las tarjetas */
+.publicacion-global h3 {
+  margin-bottom: 0;
+  font-size: 18px;
+  min-width: 150px; 
+}
+
+.publicacion-global p {
+  margin-bottom: 0;
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+/* Estilo específico para donaciones (con imagen) */
+.publicacion-donacion img {
+  width: 150px; 
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 0;
+}
+
+/* Estilo para los detalles de las publicaciones */
+.publicacion-global small {
+  display: block;
+  font-size: 12px;
+  color: #ccc;
+  margin-bottom: 0;
+}
+
+/* Estilo para el botón de filtro activo */
+.active-filter {
+  background-color: #1b2a41;
+}

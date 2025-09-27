@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Publicar Servicio{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Publicar un nuevo Servicio</h2>
+    <form action="{{ url_for('publicar_servicio') }}" method="POST">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea>
+        
+        <label for="ubicacion" class="form-label">Distrito</label>
+        <select class="form-select" id="ubicacion" name="ubicacion" required>
+            <option value="" disabled selected>Selecciona tu distrito</option>
+            <option value="Norte">Norte</option>
+            <option value="Noroeste">Noroeste</option>
+            <option value="Centro">Centro</option>
+            <option value="Oeste">Oeste</option>
+            <option value="Sudoeste">Sudoeste</option>
+            <option value="Sur">Sur</option>
+        </select>
+
+        <label for="contacto">Contacto:</label>
+        <input type="number" id="contacto" name="contacto" required>
+        
+        <button type="submit" class="btn btn-primary">Publicar Servicio</button>
+    </form>
+</div>
+{% endblock %}
+
+
