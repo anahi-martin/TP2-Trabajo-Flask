@@ -42,9 +42,8 @@ Personas en situación de vulnerabilidad por razones económicas, de salud, edad
 
 - Python 3.x  
 - Flask (framework web)  
-- MySQL (base de datos)  
+- SQLite  
 - HTML, CSS, JavaScript (frontend)  
-- Git y GitHub (control de versiones)
 
 ---
 
